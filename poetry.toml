@@ -1,0 +1,3 @@
+cache-dir = "c:\\fin_modelling\\.cache\\poetry"
+[virtualenvs]
+in-project = true

@@ -1,0 +1,12 @@
+/.venv/
+/.cache/
+/week1/*.ipynb
+/week1/*.pyc
+__pycache__/
+*.pyc
+*.pyo
+*.env
+*.log
+dist/
+build/
+poetry.lock

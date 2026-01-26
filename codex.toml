@@ -1,0 +1,11 @@
+[sandbox]
+permissions = "require_escalated"
+write_allowlist = ["c:/fin_modelling"]
+
+[repo]
+paths = ["c:/fin_modelling"]
+
+[projects."c:/strawberry"]
+repo_path = "c:/fin_modelling"
+sandbox_permissions = "require_escalated"
+write_allowlist = ["c:/fin_modelling"]
