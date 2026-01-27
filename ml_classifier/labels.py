@@ -6,10 +6,7 @@ class Labels:
 
     @staticmethod
     def generate_label(
-        data: pd.DataFrame,
-        lookahead: int = 5,
-        thresh: float = 0.01,
-        col: str = "Close"
+        data: pd.DataFrame, lookahead: int = 5, thresh: float = 0.01, col: str = "Close"
     ) -> pd.Series:
         """
         Label each row from the mean of the *next* `lookahead` closes:
@@ -26,9 +23,7 @@ class Labels:
         pct_change = (future_mean - data[col]) / data[col]
 
         labels = np.select(
-            [pct_change >= thresh, pct_change <= -thresh],
-            [2, 1],
-            default=0
+            [pct_change >= thresh, pct_change <= -thresh], [2, 1], default=0
         )
 
         return pd.Series(labels, index=data.index)
@@ -39,7 +34,9 @@ class Labels:
 
         for la in lookaheads:
             for th in thresholds:
-                df_ta[f"label_la{la}_th{th:.3f}"] = self.generate_label(df_ta, lookahead=la, thresh=th)
-        
+                df_ta[f"label_la{la}_th{th:.3f}"] = self.generate_label(
+                    df_ta, lookahead=la, thresh=th
+                )
+
         df_ta.dropna(inplace=True)
         return df_ta

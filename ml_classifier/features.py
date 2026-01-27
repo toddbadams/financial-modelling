@@ -1,19 +1,8 @@
-from dataclasses import dataclass
+import typing
 import pandas as pd
 import pandas_ta as ta
 
 
-@dataclass(frozen=True)
-class TestData:
-    train: pd.DataFrame
-    test: pd.DataFrame
-    validation: pd.DataFrame
-    feature_cols: list[str]
-
-    @property
-    def test_features(self) -> pd.DataFrame:
-        return self.train[self.feature_cols]
-    
 class Features:
 
     @staticmethod
@@ -45,7 +34,9 @@ class Features:
         # 'Know Sure Thing': This indicator, by Martin Pring, attempts to capture trends using a smoothed indicator of four different smoothed ROCs.
         df = self._merge(df, ta.kst(df["Close"]))
         # Moving Average Convergence Divergence: This indicator attempts to identify trends.
-        df["macd"] = ta.macd(df["Close"])["MACD_12_26_9"]
+        m = ta.macd(df["Close"])
+        df = self._merge(df, m)
+        # df["macd"] = ta.macd(df["Close"])["MACD_12_26_9"]
 
         # --- Trend --- #
         for length in [5, 10, 20]:
@@ -53,7 +44,7 @@ class Features:
             df[f"sma_{length}"] = ta.sma(df["Close"], length=length)
             # Exponential Moving Average: This Moving Average is more responsive than the Simple Moving Average (SMA).
             df[f"ema_{length}"] = ta.ema(df["Close"], length=length)
-        # Volume Weighted Moving Average: Computes a weighted average using price and volume.    
+        # Volume Weighted Moving Average: Computes a weighted average using price and volume.
         df["vwma_20"] = ta.vwma(df["Close"], df["Volume"], length=20)
 
         # --- Volatility --- #
@@ -73,18 +64,7 @@ class Features:
         # Negative Volume Index: This indicator attempts to identify where smart money is active.
         df["nvi"] = ta.nvi(df["Close"], df["Volume"])
         # Positive Volume Index: This indicator attempts to identify where smart money is active.
-        df["pvi"] = ta.pvi(df["Close"], df["Volume"])
-
+        x = ta.pvi(df["Close"], df["Volume"])
+        df = self._merge(df, x)
+        # df["pvi"] = x
         return df
-
-    def training_data(self, df_ta: pd.DataFrame) -> TestData:
-        TRAIN_PCT = 0.6
-        TEST_PCT = 0.2
-        # validation is remaining data
-        train_index = int(len(df_ta) * TRAIN_PCT)
-        test_index = int(len(df_ta) * (TEST_PCT + TRAIN_PCT))
-        train_df, test_df = df_ta.iloc[:train_index], df_ta.iloc[train_index:test_index]
-        val_df = df_ta.iloc[test_index:]
-        feature_cols = [c for c in df_ta.columns if c not in ["Open","High","Low","Close","Adj Close","Volume"] and not c.startswith("label_")]
-
-        return TestData(train=train_df, test=test_df, validation=val_df, feature_cols=feature_cols)
