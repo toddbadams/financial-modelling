@@ -30,7 +30,7 @@ After activation, verify with `python --version` or `pip list` to confirm you're
 From the project root (still within the virtual environment) run:
 
 ```powershell
-streamlit run week1/x.py
+streamlit run src/ui/app.py
 ```
 
 Streamlit will start a local server, and the console prints a URL (usually `http://localhost:8501`) that you can open in your browser. Control-C stops the app when you're done.
