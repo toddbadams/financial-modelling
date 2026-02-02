@@ -34,3 +34,19 @@ streamlit run src/ui/app.py
 ```
 
 Streamlit will start a local server, and the console prints a URL (usually `http://localhost:8501`) that you can open in your browser. Control-C stops the app when you're done.
+
+## 4. Quantitative Finance Learning Websites
+
+For those looking to enhance their quantitative finance skills, there are several reputable websites and platforms that offer a range of resources and courses. Here are some notable options:
+
+[Quants Hub](https://quantshub.com/): A comprehensive online resource for Quantitative Analysts, Risk Managers, Data Scientists, and more, offering both online training and a rich library of content for self-paced learning. 
+
+[QuantStart](https://www.quantstart.com/articles/Free-Quantitative-Finance-Resources/): A big list of free quantitative finance resources, including ebooks, slides, courses, videos, and data, all available for free or with a free signup. 
+
+[QuantEdX](https://quantedx.com/): An open-access platform for quantitative finance education, providing expert-led online courses and interactive notebooks. 
+
+[Best Quantitative Finance courses (2026) ranked by Bankers](https://www.bankersbyday.com/quantitative-finance-courses-certifications/): A detailed list of courses covering various aspects of quantitative finance, including traditional and behavioral finance theory, technical analysis, and algorithmic trading. 
+
+[Quantitative Finance Stack Exchange](https://quant.stackexchange.com/): A community forum where users can ask questions and share knowledge on quantitative finance topics. 
+
+[Best Quantitative Finance Courses & Certificates | Coursera](https://www.coursera.org/courses?query=quantitative%20finance&msockid=142abda7c13a66dc1b3fa86bc0da671a): A platform offering a variety of courses on financial modeling, risk assessment, portfolio optimization, and algorithmic trading strategies. 

@@ -12,13 +12,14 @@ class DataInjestor:
 
     @staticmethod
     def get(
-        symbols: list[str], start_date: str, end_date: typing.Optional[str] = None
+        symbols: str | list[str], start_date: str, end_date: typing.Optional[str] = None
     ) -> pd.DataFrame:
+        symbol_key = symbols if isinstance(symbols, str) else "_".join(sorted(symbols))
         cache_name = "_".join(
             filter(
                 None,
                 (
-                    symbols,
+                    symbol_key,
                     start_date,
                     end_date or "latest",
                 ),
@@ -29,7 +30,7 @@ class DataInjestor:
         if cache_path.exists():
             return pd.read_parquet(cache_path)
 
-        df: pd.DataFrame | None = yf.download(symbol, start=start_date, end=end_date)
+        df: pd.DataFrame | None = yf.download(symbols, start=start_date, end=end_date)
 
         if df is None:
             return pd.DataFrame(
