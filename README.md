@@ -1,4 +1,12 @@
+# Financial Modelling
 
+A Streamlit-based educational app for learning quantitative finance concepts. It uses interactive visualizations, live market data, and structured educational content to teach topics like asset risk, return analysis, normalization, and portfolio optimization.
+
+## Repository Structure
+
+- **`/src`** — Application source code (Streamlit UI, data layer, reusable components)
+- **`/workbooks`** — Resource material used as background information when creating the application (Jupyter notebooks, ML classifier module, educational notes)
+- **`/ai_context`** — Context markdown files for AI agents
 
 # Project setup
 

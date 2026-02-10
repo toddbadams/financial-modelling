@@ -10,11 +10,8 @@ This file is the **entry point** for all AI context in `ai_context`. Use it to f
 ## 1) Start here (primary sources)
 Use these documents first, in order, when implementing or updating code:
 
-1. **Repo/runtime/tooling defaults**
-   - `docs/AI_context/technology_stack.md`
-
-2. **UI ops console (Streamlit)**
-   - `docs/AI_context/ui_context.md`
+1. **UI educational dashboard (Streamlit)**
+   - `ai_context/ui_context.md`
 
 ---
 

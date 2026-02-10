@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(dir:*)",
+      "Bash(if exist \"c:\\\\financial-modelling\\\\how-to-trade\" dir \"c:\\\\financial-modelling\\\\how-to-trade\" else echo \"how-to-trade directory not found\")"
+    ]
+  }
+}

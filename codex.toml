@@ -1,8 +1,0 @@
-[sandbox]
-write_allowlist = ["c:/financial-modelling"]
-
-[repo]
-paths = ["c:/financial-modelling"]
-
-[projects."c:/financial-modelling"]
-repo_path = "c:/financial-modelling"

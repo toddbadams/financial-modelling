@@ -1,0 +1,11 @@
+In winsorisation, the tails are not removed arbitrarily; the cutoff points are defined by an explicit statistical rule chosen by the modeler. The “tail point” is selected using one of a small number of standard approaches, each reflecting a trade-off between robustness and information loss.
+
+The most common method is percentile-based cutoffs. You choose lower and upper quantiles of the data distribution, for example the 1st and 99th percentiles or the 5th and 95th percentiles. Any observation below the lower percentile is set equal to the lower percentile value, and any observation above the upper percentile is set equal to the upper percentile value. The choice of percentile reflects how aggressive you want the outlier treatment to be. In asset pricing and factor modeling, 1%–99% or 2.5%–97.5% are very common.
+
+Another approach uses standard deviation or z-score thresholds. Here, you compute the mean and standard deviation of the series and cap values beyond a fixed number of standard deviations, such as ±3σ. Observations outside this range are set to the boundary values. This method is simple but assumes the underlying distribution is reasonably well behaved; it is less robust when the data is heavily skewed or fat-tailed, which is common in finance.
+
+A more robust variant uses median-based measures such as the median and median absolute deviation (MAD). Tail points are defined as a multiple of the MAD from the median, for example median ± 5 × MAD. This avoids sensitivity to extreme values when estimating the cutoff itself and is often preferred for cross-sectional factor data.
+
+In cross-sectional financial modeling, such as equity factor construction, winsorisation is typically applied cross-sectionally at each time step (for example, each month). The tail points are recalculated each period using that period’s distribution, not fixed globally. This preserves relative rankings while limiting the influence of extreme observations.
+
+The selection of the tail point is therefore a modeling choice, guided by domain knowledge and empirical testing. In practice, modelers justify the choice by showing stability of results across reasonable cutoff ranges, for example demonstrating that factor returns are similar under 1% and 2.5% winsorisation.
